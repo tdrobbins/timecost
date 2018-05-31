@@ -1,11 +1,13 @@
 regex = /\$\d{1,3}(?:(,\d{3})*|(\d{3})*)(?:\.\d{2})?/gm
 
-wage = 10/60
+wage = 10
+
+minuteWage = wage/60
 
 let format = "\$${price} (${days!=0 ? days+'d ' : ''}${hours!=0 ? hours+'h' : ''}${hours*minutes !=0 ? ' ' : '' }${minutes != 0 ? minutes+'m' : ''})"
 
 function reformat(price){
-    let totalMinutes = price.replace(/\$|\,/g,"")/wage;
+    let totalMinutes = price.replace(/\$|\,/g,"")/minuteWage;
     if (totalMinutes === 0) {return `$${price}`}
     else {
       let days = Math.trunc(totalMinutes/1440);
@@ -57,7 +59,7 @@ function replaceText (node) {
 
     // Now that all the replacements are done, perform the DOM manipulation.
     // node.textContent = content;
- 
+
   }
   else {
     // This node contains more than just text, call replaceText() on each
