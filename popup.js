@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   chrome.storage.sync.get('wage', function(data) {
-    console.log(data);
     wageInput.value = data.wage;
   });
 
@@ -15,20 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
       chrome.storage.sync.set({'active': activeSwitch.checked});
   });
 
+  wageInput.addEventListener("input", function(){
+     chrome.storage.sync.set({"wage": wageInput.value}); 
+  });
 })
-
-
-function setActive() {
-  let hourlyWage = document.getElementById('wageInput')
-
-  /*
-    chrome.storage.sync.get('active', function(data) {
-      //let activeSwitch = document.getElementById('activeSwitch')
-      //activeSwitch.checked = data.active;
-      console.log(data);
-    });*/
-
-  //chrome.storage.sync.set("active",active.checked)
-  console.log(active.checked)
-  console.log(hourlyWage.value)
-}

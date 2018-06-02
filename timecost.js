@@ -1,17 +1,12 @@
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({
-    'active': true,
-    'wage': 10
-  });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-  chrome.storange.sync.get(["active", "wage"], function(data) {
+
+chrome.storage.sync.get(["active", "wage"], function(data) {
     if (data.active) {
       let regex = /\$\d{1,3}(?:(,\d{3})*|(\d{3})*)(?:\.\d{2})?/gm
       hourlyWage = data.wage
 
-      var minuteWage = wage / 60
+      var minuteWage = hourlyWage / 60
+      
 
       var format = "\$${price} (${days!=0 ? days+'d ' : ''}${hours!=0 ? hours+'h' : ''}${hours*minutes !=0 ? ' ' : '' }${minutes != 0 ? minutes+'m' : ''})"
 
@@ -101,4 +96,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
   })
-});
+;
