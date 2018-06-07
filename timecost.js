@@ -1,12 +1,12 @@
-
-
 chrome.storage.sync.get(["active", "wage"], function(data) {
-    if (data.active) {
+
+  console.log(window.location.hostname);
+
+  if (data.active) {
       let regex = /\$\d{1,3}(?:(,\d{3})*|(\d{3})*)(?:\.\d{2})?/gm
       hourlyWage = data.wage
 
       var minuteWage = hourlyWage / 60
-      
 
       var format = "\$${price} (${days!=0 ? days+'d ' : ''}${hours!=0 ? hours+'h' : ''}${hours*minutes !=0 ? ' ' : '' }${minutes != 0 ? minutes+'m' : ''})"
 
@@ -15,6 +15,7 @@ chrome.storage.sync.get(["active", "wage"], function(data) {
         if (totalMinutes === 0) {
           return `$${price}`
         } else {
+  
           var days = Math.trunc(totalMinutes / 1440);
           totalMinutes -= days * 1440;
           var hours = Math.trunc(totalMinutes / 60);

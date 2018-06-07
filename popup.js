@@ -15,6 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   wageInput.addEventListener("input", function(){
-     chrome.storage.sync.set({"wage": wageInput.value}); 
+     chrome.storage.sync.set({"wage": wageInput.value});
   });
 })
